@@ -17,8 +17,9 @@ The entire task check will be done through three public static functions defined
 
 **DirectedWeightedGraphImpl**This class implement #DirectedWeightedGraph interface:The interface has a road-system or communication network in mind and should support a large number of nodes (over 100,000).
 The DirectedWeightedGraphImpl class represents a Directional Weighted Graph,with effective representation.
-*implementaion:
+**implementaion:**
 We implemented the graph for the nodes using the data structure: HashMap with Integer and NodeData parameters. For the Edges we did using the data structure: HashMap for the Edges with Integer parameters and another HashMap with Integer and EdgeData parameters
+
 ## algorithems:
 
 **DirectedWeightedGraphAlgorithmsImpl** This class implement DirectedWeightedGraphAlgorithms interface, represents a Directed (positive) Weighted Graph Theory Algorithms.
