@@ -28,11 +28,13 @@ The functions we implement:
  2. DirectedWeightedGraph  **copy**()- computes a deep copy of this weighted graph.
  3. boolean  **isConnected**()- returns true if and only if there is a valid path from each node to each.
     We have created 2 auxiliary functions that we use for the function isConnected :
+    
    DirectedWeightedGraph **Transpose**()- make a transpose graph to check for isConnected function.
    **BFS**(NodeData n, DirectedWeightedGraph g)- A search algorithm is an algorithm used to move on graph nodes for the most part while searching for a node that maintains a         strike.
    
  4. double **shortestPathDist**(int src, int dest)- computes the length of the shortest path between src to dest, if there is no path we return -1.
     We have created auxiliary function that we use for the function:
+    
     **Dijkstra**(int key)- solves the problem of finding the easiest route from point in graph to destination in a weighted graph.
 
  5. List<NodeData> **shortestPath**(int src, int dest)-return list of shortest path between src to dest, , if there is no path we return null.
