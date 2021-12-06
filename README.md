@@ -29,9 +29,10 @@ The functions we implement:
 
 5. List<NodeData> **shortestPath**(int src, int dest)-return list of shortest path between src to dest, , if there is no path we return null.
 6. NodeData **center**()- finds the NodeData which minimizes the max distance to all the other nodes
+    
 7.List<NodeData> **tsp**(List<NodeData> cities)- return a list of consecutive nodes which go over all the nodes in cities.
 
-   8.**save**(file)- saves this weighted (directed) graph to the given, the file is JSON format
+ 8.**save**(file)- saves this weighted (directed) graph to the given, the file is JSON format
    
-   9.**load**(file)- loads a graph to this graph algorithm, the file is JSON format.
+ 9.**load**(file)- loads a graph to this graph algorithm, the file is JSON format.
  
