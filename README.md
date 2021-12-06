@@ -15,6 +15,7 @@ The DirectedWeightedGraphImpl class represents a Directional Weighted Graph,with
 
 **DirectedWeightedGraphAlgorithmsImpl** This class implement DirectedWeightedGraphAlgorithms interface, represents a Directed (positive) Weighted Graph Theory Algorithms.
 The functions we implement:
+
  0. void **init**(DirectedWeightedGraph g)- initialize the graph on which this set of the algorithms.
  1. DirectedWeightedGraph **getGraph**()- returns the graph of this class.
  2. DirectedWeightedGraph  **copy**()- computes a deep copy of this weighted graph.
