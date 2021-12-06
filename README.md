@@ -28,7 +28,7 @@ The functions we implement:
     **Dijkstra**(int key)- solves the problem of finding the easiest route from point in graph to destination in a weighted graph.
 
  5. List<NodeData> **shortestPath**(int src, int dest)-return list of shortest path between src to dest, , if there is no path we return null.
- 6. NodeData **center**()- finds the NodeData which minimizes the max distance to all the other nodes
+ 6. NodeData **center**()- finds the NodeData which minimizes the max distance to all the other nodes.
     
    7.List<NodeData> **tsp**(List<NodeData> cities)- return a list of consecutive nodes which go over all the nodes in cities.
 
