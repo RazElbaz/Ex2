@@ -32,7 +32,7 @@ The functions we implement:
     
   7.List<NodeData> **tsp**(List<NodeData> cities)- return a list of consecutive nodes which go over all the nodes in cities.
 
-  8.**save**(file)- saves this weighted (directed) graph to the given, the file is JSON format
+  8.**save**(file)- saves this weighted (directed) graph to the given, the file is JSON format.
    
   9.**load**(file)- loads a graph to this graph algorithm, the file is JSON format.
  
