@@ -1,5 +1,12 @@
 # Ex2
 The goal of this program to planning and realizing intentional and weighted graphs in Java
+# introduction:
+The project is actually the design and implementation of directed and weighted graphs in the JAVA programming language.
+First, we had to design and implement four interfaces that were designed to produce a directed graph: class for nodes, class for edges, class for GeoLocationand class for graph.
+Second, we implemented an interface of the algorithms of the graph, the breakdown of the function names and explanations will appear below.
+Next, we implemented a graphical interface that includes a menu that allows you to load graphs from files, save them, edit them, and run algorithms on them.
+We wrote JUnit tests to implement the functions of the graph and the algorithms of the graph, which are designed to test their correctness and performance.
+The entire task check will be done through three public static functions defined in the main class: Ex2.java.
 
 ## Planning of the main departments:
 **EdgeDataImpl**  This class implement EdgeData interface, represents the set of operations applicable on a directional edge(src,dest) in a (directional) weighted graph.
