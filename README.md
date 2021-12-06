@@ -42,3 +42,6 @@ The functions we implement:
  8. **save**(file)- saves this weighted (directed) graph to the given, the file is JSON format.
  9. **load**(file)- loads a graph to this graph algorithm, the file is JSON format.
  
+
+## Gui:
+ A graphical interface that includes a menu that allows you to load graphs from files, save them, edit them and run algorithms on them.
