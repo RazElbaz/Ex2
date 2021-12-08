@@ -129,8 +129,9 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
     private void resetGraph() {
         Collection<Integer> keys = new ArrayList<Integer>();
         for (int i = 0; i < this.Graph.nodeSize(); i++) {
+            if (this.Graph.getNode(i)!= null){
             keys.add(this.Graph.getNode(i).getKey());
-        }
+        }}
         for (int node : keys) {
             NodeData n = this.Graph.getNode(node);
             n.setInfo("");
@@ -194,7 +195,8 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
                             ans.put(dest.getKey(), cnt_node);
                             // add the new node
                             Prior_Queue.add(dest);
-                        }}}}}
+                        }}}}
+            }
         return ans;
     }
 
@@ -408,4 +410,5 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
         return true;
     }
 
+   
 }
