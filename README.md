@@ -54,7 +54,7 @@ Implements the algorithms we have created and turns them into a graph.
 In our graph it is possible to receive and save a Json file, and perform runs of each of the functions that we Implement in the other class.
  Because the graph directs each pink circle basically indicates the dest of each side.
  
-## GUI:How to run?
+## How to run?
 Download all the files in the git to your computer
 Open CMD line
 And records:
