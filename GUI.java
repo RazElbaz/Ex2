@@ -473,30 +473,35 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     private void Center() {
-        String ans = "                  "+ Graph_Algorithms.center().getKey();
-        final JFrame window = new JFrame("center");
-        JLabel isConnect = new JLabel(ans);
-        isConnect.setFont(new Font("Ariel", isConnect.getFont().getStyle(), 25));
-        JButton close = new JButton("Close");
+        if (Graph_Algorithms.center() == null) {
+            JOptionPane.showMessageDialog(null, "Is not Connected");
+        } else {
 
-        GridLayout gridLayout = new GridLayout();
-        gridLayout.setRows(2);
-        window.setLayout(gridLayout);
+            String ans = "                  " + Graph_Algorithms.center().getKey();
+            final JFrame window = new JFrame("center");
+            JLabel isConnect = new JLabel(ans);
+            isConnect.setFont(new Font("Ariel", isConnect.getFont().getStyle(), 25));
+            JButton close = new JButton("Close");
 
-        window.add(isConnect);
-        window.add(close);
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+            GridLayout gridLayout = new GridLayout();
+            gridLayout.setRows(2);
+            window.setLayout(gridLayout);
 
-        close.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                window.setVisible(false);
-            }
-        });
+            window.add(isConnect);
+            window.add(close);
+            window.setSize(300, 150);
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.setVisible(true);
+
+
+            close.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    window.setVisible(false);
+                }
+            });
+        }
     }
-
 
 
     private void tsp() {
@@ -550,7 +555,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Invalid value");
+                        JOptionPane.showMessageDialog(null, "Is not connected");
 
                     }
                     window.setVisible(false);
