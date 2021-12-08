@@ -248,6 +248,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     private void removeNode() {
+        init();
         final JFrame window = new JFrame("Remove Node");
         final JTextField NodeKey = new JTextField();
         JLabel nodeKey = new JLabel("    Node Key: ");
@@ -282,6 +283,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     private void removeEdge() {
+        init();
         final JFrame window = new JFrame("Remove Edge");
         final JTextField srcText = new JTextField();
         final JTextField destText = new JTextField();
@@ -374,7 +376,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         window.setSize(300, 150);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
-
         enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -390,10 +391,16 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                             ans = ans + shortPath1.get(i).getKey()+"-> ";
                         }
                         ans= ans +shortPath1.get(shortPath1.size()-1).getKey();
-                    }else{
-                        ans ="-1";
+                        JOptionPane.showMessageDialog(input, "The shortest Path is: " + ans);
+                        Graph = Graph_Algorithms.getGraph();
+                        new GUI(Graph);
+                        repaint();
                     }
-                    JOptionPane.showMessageDialog(input, "The shortest Path is: " + ans);
+                    else {
+                        JOptionPane.showMessageDialog(null, "Invalid value");
+
+                    }
+
                     window.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
@@ -454,6 +461,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             shortPathMessage(src,dest);
+
                             window.setVisible(false);
                         }
                     });
@@ -536,8 +544,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                             str = str + TSP_List.get(i).getKey()+"->";
                         }
                         str= str +TSP_List.get(TSP_List.size()-1).getKey();
+                        JOptionPane.showMessageDialog(jFrame, "The shortest Path is: " + str);
+
                     }
-                    JOptionPane.showMessageDialog(jFrame, "The shortest Path is: " + str);
+                    else {
+                        JOptionPane.showMessageDialog(null, "Invalid value");
+
+                    }
                     window.setVisible(false);
 
                 } catch (Exception exception) {
@@ -619,6 +632,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     public void shortPathMessage(int src, int dest) {
+       // repaint();
         StringBuilder str = new StringBuilder();
         List<NodeData> ans = new ArrayList<NodeData>();
         DirectedWeightedGraphAlgorithms graphAlgorithms = new DirectedWeightedGraphAlgorithmsImpl();
@@ -631,7 +645,12 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                 str.append(ans.get(i).getKey()).append("-> ");
             }
             str.append(ans.get(ans.size()-1).getKey());
+            Graph = Graph_Algorithms.getGraph();
+            new GUI(Graph);
             repaint();
+        }
+        if(ans==null){
+            JOptionPane.showMessageDialog(null, "There is no Path");
         }
     }
 
