@@ -408,17 +408,4 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
         return true;
     }
 
-    public static void main(String[] args) {
-        DirectedWeightedGraph g = new DirectedWeightedGraphImpl();
-        DirectedWeightedGraphAlgorithms alg = new DirectedWeightedGraphAlgorithmsImpl();
-        alg.init(g);
-        alg.load("C:\\Users\\97252\\IdeaProjects\\Ex2\\src\\api\\G1.json");
-        //for (int i =0; i<alg.getGraph().nodeSize(); i++){
-        //System.out.println(alg.getGraph().getNode(i).getKey());
-        System.out.println(alg.getGraph().nodeSize());
-        System.out.println(alg.isConnected());
-        System.out.println(alg.copy().getNode(1).getKey());
-        System.out.println(alg.getGraph().edgeSize());
-        //   alg.save("r.json");
-    }//}
 }
