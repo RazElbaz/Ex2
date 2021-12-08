@@ -460,14 +460,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     close.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            shortPathMessage(src,dest);
-
                             window.setVisible(false);
                         }
                     });
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
-                } }});
+                }}});
+
     }
 
     private void Center() {
@@ -631,28 +630,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     }
 
-    public void shortPathMessage(int src, int dest) {
-       // repaint();
-        StringBuilder str = new StringBuilder();
-        List<NodeData> ans = new ArrayList<NodeData>();
-        DirectedWeightedGraphAlgorithms graphAlgorithms = new DirectedWeightedGraphAlgorithmsImpl();
-        graphAlgorithms.init(Graph);
-        ans = graphAlgorithms.shortestPath(src, dest);
-        if (ans != null) {
-            ans = (ArrayList<NodeData>) graphAlgorithms.shortestPath(src, dest);
-            for (int i = 0; i + 1 < ans.size(); i++) {
-                Graph.getEdge(ans.get(i).getKey(), ans.get(i + 1).getKey()).setTag(10);
-                str.append(ans.get(i).getKey()).append("-> ");
-            }
-            str.append(ans.get(ans.size()-1).getKey());
-            Graph = Graph_Algorithms.getGraph();
-            new GUI(Graph);
-            repaint();
-        }
-        if(ans==null){
-            JOptionPane.showMessageDialog(null, "There is no Path");
-        }
-    }
 
 
     @Override
@@ -669,6 +646,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent arg0) {;}
+
 
 
 
