@@ -398,8 +398,7 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
 
             FileReader reader = new FileReader(file);
             this.Graph = gson.fromJson(reader, DirectedWeightedGraphImpl.class);
-            System.out.println(this.Graph);
-
+           
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
