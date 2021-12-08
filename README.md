@@ -50,20 +50,30 @@ The functions we implement:
 
 ## GUI:
 Our class GUI
+ 
 Implements the algorithms we have created and turns them into a graph.
+ 
 In our graph it is possible to receive and save a Json file, and perform runs of each of the functions that we Implement in the other class.
+ 
  Because the graph directs each pink circle basically indicates the dest of each side.
  
 ## How to run?
 Download all the files in the git to your computer
+ 
 Open CMD line
+ 
 And records:
+ 
  G.json = The file that we load to the program
+ 
 java - jar "EX2.JAR location on your computer" "G.json location on your computer"
  
  ## Performence
  We tested the program we built with several different sizes of graphs.
+ 
 Graph with 1000 vertices: 1.5 seconds, SAVE 2 seconds, CENTER 10 minutes, ISCONNECTED 2 seconds
+ 
 Graph with 10000 vertices: LOAD 2 seconds, SAVE 3 seconds,CENTER 29 minutes, ISCONNECTED 3 seconds
+ 
 Graph with 100000 vertices: LOAD 8 seconds, SAVE 17 seconds, ISCONNECTED 9 seconds
 
