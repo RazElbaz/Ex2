@@ -100,11 +100,11 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     //    @return Iterator<node_data>
     @Override
     public Iterator<NodeData> nodeIter() {
-      //  int cnt_MC = this.MC;
+        int cnt_MC = this.MC;
         Collection<NodeData> node = this.Nodes.values();
-//        if (this.MC!= cnt_MC) {
-//            throw new RuntimeException();
-//        }
+       if (this.MC!= cnt_MC) {
+            throw new RuntimeException();
+        }
         return node.iterator();
     }
 
@@ -113,7 +113,7 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     //    @return Iterator<EdgeData>
     @Override
     public Iterator<EdgeData> edgeIter() {
-      //  int cnt_MC = this.MC;
+        int cnt_MC = this.MC;
         Collection<EdgeData> Ed = new LinkedList<EdgeData>();
         for (int i = 0; i < Node_Size; i++) {
             if(Nodes.containsKey(i)){
@@ -122,9 +122,9 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
             Ed.add(e.next());
             }}
         }
-//        if (this.MC!= cnt_MC)  {
-//            throw new RuntimeException();
-//        }
+        if (this.MC!= cnt_MC)  {
+            throw new RuntimeException();
+        }
         return Ed.iterator();
     }
 
@@ -133,10 +133,10 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     //  @return Iterator<EdgeData>
     @Override
     public Iterator<EdgeData> edgeIter(int node_id) {
-   //     int cnt_MC = this.MC;
-//        if (this.MC != cnt_MC) {
-//            throw new RuntimeException();
-//        }
+        int cnt_MC = this.MC;
+        if (this.MC != cnt_MC) {
+            throw new RuntimeException();
+        }
         return this.Edges.get(node_id).values().iterator();
     }
 
@@ -211,5 +211,7 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     }
 
 }
+
+
 
 
