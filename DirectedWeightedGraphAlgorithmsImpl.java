@@ -147,8 +147,6 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
     @Override
     public double shortestPathDist(int src, int dest) {
         if (src == dest) return 0;
-        if(this.Graph.getNode(src)==null) return -1;
-        if(this.Graph.getNode(dest)==null) return -1;
         resetGraph();
         HashMap<Integer, NodeData> Hash_parent = Algo_Dijkstra(src);
         NodeData cnt = this.Graph.getNode(dest);
@@ -208,8 +206,6 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
     // @param dest - end (target) node
     @Override
     public List<NodeData> shortestPath(int src, int dest) {
-        if(this.Graph.getNode(src)==null) return null;
-        if(this.Graph.getNode(dest)==null) return null;
         resetGraph();
         //create Hashmap with the nodes of the path
         HashMap<Integer, NodeData> Hash_parent = Algo_Dijkstra(src);
@@ -221,10 +217,10 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
             // add all the other nodes in the path
             while (cnt != this.Graph.getNode(src)) {
                 if(cnt != null){
-                cnt = Hash_parent.get(cnt.getKey());
-                //add the next nodes to the first place in ans list
-                ans.addFirst(cnt);
-            }}
+                    cnt = Hash_parent.get(cnt.getKey());
+                    //add the next nodes to the first place in ans list
+                    ans.addFirst(cnt);
+                }}
             if (cnt != null)
                 return ans;
         }
@@ -237,7 +233,7 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
     @Override
     public NodeData center() {
         if (!isConnected()){
-           return null;
+            return null;
         }
         resetGraph();
         NodeData ans = new NodeDataImpl();
@@ -260,12 +256,17 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
         return ans;
     }
 
-     // Computes a list of consecutive nodes which go over all the nodes in cities.
-     //the sum of the weights of all the consecutive (pairs) of nodes (directed) is the "cost" of the solution -
-     //the lower the better.
-     //See: https://en.wikipedia.org/wiki/Travelling_salesman_problem
+    // Computes a list of consecutive nodes which go over all the nodes in cities.
+    //the sum of the weights of all the consecutive (pairs) of nodes (directed) is the "cost" of the solution -
+    //the lower the better.
+    //See: https://en.wikipedia.org/wiki/Travelling_salesman_problem
     @Override
     public List<NodeData> tsp(List<NodeData> cities) {
+        for (int i =0; i<cities.size(); i++){
+          if(this.Graph.getNode(cities.get(i).getKey())==null){
+            return null;
+          }
+        }
         // if the graph is not connected return null
         if (this.isConnected()) {
             //create list of Nodedata that we will return
@@ -307,15 +308,15 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
                     if (ans.isEmpty() || l != 0) {
                         ans.add(current.get(l));
                     }}
-                    //remove dest
-                    for (int j = 0; j < cities.size(); j++) {
-                        if (cities.get(j).getKey() == dest) {
-                            cities.remove(j);
-                        }}}
+                //remove dest
+                for (int j = 0; j < cities.size(); j++) {
+                    if (cities.get(j).getKey() == dest) {
+                        cities.remove(j);
+                    }}}
 
-                return ans;
+            return ans;
         }
-            return null;
+        return null;
     }
 
     //function that implement the first iteration of TSP function
@@ -398,7 +399,8 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
 
             FileReader reader = new FileReader(file);
             this.Graph = gson.fromJson(reader, DirectedWeightedGraphImpl.class);
-           
+            System.out.println(this.Graph);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -406,4 +408,17 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
         return true;
     }
 
+    public static void main(String[] args) {
+        DirectedWeightedGraph g = new DirectedWeightedGraphImpl();
+        DirectedWeightedGraphAlgorithms alg = new DirectedWeightedGraphAlgorithmsImpl();
+        alg.init(g);
+        alg.load("C:\\Users\\97252\\IdeaProjects\\Ex2\\src\\api\\G1.json");
+        //for (int i =0; i<alg.getGraph().nodeSize(); i++){
+        //System.out.println(alg.getGraph().getNode(i).getKey());
+        System.out.println(alg.getGraph().nodeSize());
+        System.out.println(alg.isConnected());
+        System.out.println(alg.copy().getNode(1).getKey());
+        System.out.println(alg.getGraph().edgeSize());
+        //   alg.save("r.json");
+    }//}
 }
