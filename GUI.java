@@ -276,10 +276,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     Graph = Graph_Algorithms.getGraph();
                     new GUI(Graph);
                     repaint();
+
                     window.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
-                }}});
+                }
+            }
+        });
     }
 
     private void removeEdge() {
@@ -397,7 +400,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                         repaint();
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Invalid value");
+                        JOptionPane.showMessageDialog(null, "There is no Path");
 
                     }
 
@@ -631,7 +634,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
 
-
     @Override
     public void mouseClicked(MouseEvent arg0) {;}
 
@@ -646,7 +648,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent arg0) {;}
-
 
 
 
