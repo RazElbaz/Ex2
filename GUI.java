@@ -113,8 +113,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         if (action.equals("Short Path Dist")) {shortestPathDist();}
         if (action.equals("Is Connected")) {isConnected();}
         if (action.equals("Center")) {Center();}
-        if (action.equals("TSP")) {
-            tsp();}
+        if (action.equals("TSP")) {tsp();}
     }
 
     private void Save() {
@@ -152,7 +151,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     private void addNode() {
-        final JFrame window = new JFrame("Add Node");
+        final JFrame SCREEN = new JFrame("Add Node");
         final JTextField node_x = new JTextField();
         JLabel X = new JLabel("       X: ");
         X.setFont(new Font("Ariel", X.getFont().getStyle(), 15));
@@ -167,18 +166,18 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setRows(4);
         gridLayout.setColumns(2);
-        window.setLayout(gridLayout);
+        SCREEN.setLayout(gridLayout);
 
-        window.add(X);
-        window.add(node_x);
-        window.add(Y);
-        window.add(node_y);
-        window.add(key);
-        window.add(node_key);
-        window.add(enter);
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.add(X);
+        SCREEN.add(node_x);
+        SCREEN.add(Y);
+        SCREEN.add(node_y);
+        SCREEN.add(key);
+        SCREEN.add(node_key);
+        SCREEN.add(enter);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
 
         enter.addActionListener(new ActionListener() {
             @Override
@@ -193,7 +192,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     new GUI(Graph);
                     repaint();
 
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 }
@@ -202,33 +201,33 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     private void Connect() {
-        final JFrame window = new JFrame("Add Edge");
+        final JFrame SCREEN = new JFrame("Add Edge");
         final JTextField srcText = new JTextField();
         final JTextField destText = new JTextField();
         final JTextField weightText = new JTextField();
         JLabel src = new JLabel("Source Key: ");
         src.setFont(new Font("Ariel", src.getFont().getStyle(), 15));
-        window.add(src);
-        window.add(srcText);
+        SCREEN.add(src);
+        SCREEN.add(srcText);
         JLabel dest = new JLabel("Destination key: ");
         dest.setFont(new Font("Ariel", dest.getFont().getStyle(), 15));
-        window.add(dest);
-        window.add(destText);
+        SCREEN.add(dest);
+        SCREEN.add(destText);
         JLabel weight = new JLabel("Weight: ");
         weight.setFont(new Font("Ariel", weight.getFont().getStyle(), 15));
-        window.add(weight);
-        window.add(weightText);
+        SCREEN.add(weight);
+        SCREEN.add(weightText);
         JButton enter = new JButton("Enter");
-        window.add(enter);
+        SCREEN.add(enter);
 
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(2);
         gridLayout.setRows(4);
-        window.setLayout(gridLayout);
+        SCREEN.setLayout(gridLayout);
 
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
         enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -240,7 +239,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     Graph = Graph_Algorithms.getGraph();
                     new GUI(Graph);
                     repaint();
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 }}});
@@ -249,7 +248,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     private void removeNode() {
         init();
-        final JFrame window = new JFrame("Remove Node");
+        final JFrame SCREEN = new JFrame("Remove Node");
         final JTextField NodeKey = new JTextField();
         JLabel nodeKey = new JLabel("    Node Key: ");
         nodeKey.setFont(new Font("Ariel", nodeKey.getFont().getStyle(), 15));
@@ -258,15 +257,15 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setRows(2);
         gridLayout.setColumns(2);
-        window.setLayout(gridLayout);
+        SCREEN.setLayout(gridLayout);
 
-        window.add(nodeKey);
-        window.add(NodeKey);
-        window.add(Enter);
+        SCREEN.add(nodeKey);
+        SCREEN.add(NodeKey);
+        SCREEN.add(Enter);
 
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
         Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -277,7 +276,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     new GUI(Graph);
                     repaint();
 
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 }
@@ -287,7 +286,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     private void removeEdge() {
         init();
-        final JFrame window = new JFrame("Remove Edge");
+        final JFrame SCREEN = new JFrame("Remove Edge");
         final JTextField srcText = new JTextField();
         final JTextField destText = new JTextField();
 
@@ -301,17 +300,17 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(2);
         gridLayout.setRows(3);
-        window.setLayout(gridLayout);
+        SCREEN.setLayout(gridLayout);
 
-        window.add(Src);
-        window.add(srcText);
-        window.add(Dest);
-        window.add(destText);
-        window.add(Enter);
+        SCREEN.add(Src);
+        SCREEN.add(srcText);
+        SCREEN.add(Dest);
+        SCREEN.add(destText);
+        SCREEN.add(Enter);
 
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
         Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -323,7 +322,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     new GUI(Graph);
                     repaint();
 
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 }}});
@@ -331,7 +330,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     private void isConnected() {
         String ans = "                "+ Graph_Algorithms.isConnected();
-        final JFrame window = new JFrame("Is Connected");
+        final JFrame SCREEN = new JFrame("Is Connected");
         JLabel isConnect = new JLabel(ans);
         isConnect.setFont(new Font("Ariel", isConnect.getFont().getStyle(), 25));
         JButton close = new JButton("Close");
@@ -339,23 +338,23 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setRows(2);
 
-        window.setLayout(gridLayout);
-        window.add(isConnect);
-        window.add(close);
+        SCREEN.setLayout(gridLayout);
+        SCREEN.add(isConnect);
+        SCREEN.add(close);
 
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
         close.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 init();
-                window.setVisible(false);
+                SCREEN.setVisible(false);
             }
         });}
 
     private void shortestPath() {
-        final JFrame window = new JFrame("Short Path");
+        final JFrame SCREEN = new JFrame("Short Path");
         final JTextField src_text = new JTextField();
         final JTextField dest_text = new JTextField();
 
@@ -368,22 +367,22 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(2);
         gridLayout.setRows(3);
-        window.setLayout(gridLayout);
+        SCREEN.setLayout(gridLayout);
 
-        window.add(src_label);
-        window.add(src_text);
-        window.add(dest_label);
-        window.add(dest_text);
+        SCREEN.add(src_label);
+        SCREEN.add(src_text);
+        SCREEN.add(dest_label);
+        SCREEN.add(dest_text);
 
-        window.add(enter);
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.add(enter);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
         enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    JFrame input = new JFrame();
+                    JFrame frame = new JFrame();
                     int src = Integer.parseInt(src_text.getText());
                     int dest = Integer.parseInt(dest_text.getText());
                     List<NodeData> shortPath1 = Graph_Algorithms.shortestPath(src, dest);
@@ -394,7 +393,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                             ans = ans + shortPath1.get(i).getKey()+"-> ";
                         }
                         ans= ans +shortPath1.get(shortPath1.size()-1).getKey();
-                        JOptionPane.showMessageDialog(input, "The shortest Path is: " + ans);
+                        JOptionPane.showMessageDialog(frame, "The shortest Path is: " + ans);
                         Graph = Graph_Algorithms.getGraph();
                         new GUI(Graph);
                         repaint();
@@ -404,14 +403,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
                     }
 
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 } }});
     }
 
     private void shortestPathDist() {
-        final JFrame window = new JFrame("Short Path dist");
+        final JFrame SCREEN = new JFrame("Short Path dist");
         final JTextField src_text = new JTextField();
         final JTextField dest_text = new JTextField();
         JLabel src_label = new JLabel("Src: ");
@@ -424,16 +423,16 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         gridLayout.setColumns(2);
         gridLayout.setRows(3);
 
-        window.setLayout(gridLayout);
-        window.add(src_label);
-        window.add(src_text);
-        window.add(dest_label);
-        window.add(dest_text);
+        SCREEN.setLayout(gridLayout);
+        SCREEN.add(src_label);
+        SCREEN.add(src_text);
+        SCREEN.add(dest_label);
+        SCREEN.add(dest_text);
 
-        window.add(enter);
-        window.setSize(300, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.add(enter);
+        SCREEN.setSize(300, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
 
         enter.addActionListener(new ActionListener() {
 
@@ -443,9 +442,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     int src = Integer.parseInt(src_text.getText());
                     int dest = Integer.parseInt(dest_text.getText());
                     double w= Graph_Algorithms.shortestPathDist(src, dest);
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                     String ans = ""+ w;
-                    final JFrame window = new JFrame(" shortestPathDist");
+                    final JFrame SCREEN = new JFrame(" shortestPathDist");
                     JLabel isConnect = new JLabel(ans);
                     isConnect.setFont(new Font("Ariel", isConnect.getFont().getStyle(), 25));
                     JButton close = new JButton("Close");
@@ -453,17 +452,17 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     GridLayout gridLayout1 = new GridLayout();
                     gridLayout1.setRows(2);
 
-                    window.setLayout(gridLayout1);
-                    window.add(isConnect);
-                    window.add(close);
-                    window.setSize(300, 150);
-                    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    window.setVisible(true);
+                    SCREEN.setLayout(gridLayout1);
+                    SCREEN.add(isConnect);
+                    SCREEN.add(close);
+                    SCREEN.setSize(300, 150);
+                    SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    SCREEN.setVisible(true);
 
                     close.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            window.setVisible(false);
+                            SCREEN.setVisible(false);
                         }
                     });
                 } catch (Exception exception) {
@@ -478,26 +477,26 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         } else {
 
             String ans = "                  " + Graph_Algorithms.center().getKey();
-            final JFrame window = new JFrame("center");
+            final JFrame SCREEN = new JFrame("center");
             JLabel isConnect = new JLabel(ans);
             isConnect.setFont(new Font("Ariel", isConnect.getFont().getStyle(), 25));
             JButton close = new JButton("Close");
 
             GridLayout gridLayout = new GridLayout();
             gridLayout.setRows(2);
-            window.setLayout(gridLayout);
+            SCREEN.setLayout(gridLayout);
 
-            window.add(isConnect);
-            window.add(close);
-            window.setSize(300, 150);
-            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            window.setVisible(true);
+            SCREEN.add(isConnect);
+            SCREEN.add(close);
+            SCREEN.setSize(300, 150);
+            SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            SCREEN.setVisible(true);
 
 
             close.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
                 }
             });
         }
@@ -505,7 +504,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
 
     private void tsp() {
-        final JFrame window = new JFrame("tsp");
+        final JFrame SCREEN = new JFrame("tsp");
         final JTextField targetsText = new JTextField();
         JLabel targetsLabel = new JLabel("Enter List of NodeDate");
         targetsLabel.setFont(new Font("Ariel", targetsLabel.getFont().getStyle(), 25));
@@ -514,14 +513,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(1);
         gridLayout.setRows(2);
-        window.setLayout(gridLayout);
+        SCREEN.setLayout(gridLayout);
 
-        window.add(targetsLabel);
-        window.add(targetsText);
-        window.add(enter);
-        window.setSize(650, 150);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+        SCREEN.add(targetsLabel);
+        SCREEN.add(targetsText);
+        SCREEN.add(enter);
+        SCREEN.setSize(650, 150);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SCREEN.setVisible(true);
 
         enter.addActionListener(new ActionListener() {
 
@@ -552,13 +551,11 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                         }
                         str= str +TSP_List.get(TSP_List.size()-1).getKey();
                         JOptionPane.showMessageDialog(jFrame, "The shortest Path is: " + str);
-
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "Is not connected");
-
                     }
-                    window.setVisible(false);
+                    SCREEN.setVisible(false);
 
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
@@ -653,6 +650,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent arg0) {;}
+
+
 
 
 
