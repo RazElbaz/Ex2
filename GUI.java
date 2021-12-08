@@ -636,9 +636,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
 
-
-
-
     @Override
     public void mouseClicked(MouseEvent arg0) {;}
 
@@ -655,12 +652,5 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     public void mouseReleased(MouseEvent arg0) {;}
 
 
-    public static void main(String[] args) {
-        DirectedWeightedGraph graph=new DirectedWeightedGraphImpl();
-        DirectedWeightedGraphAlgorithms alg = new DirectedWeightedGraphAlgorithmsImpl();
-        alg.init(graph);
-        alg.load("C:\\Users\\97252\\IdeaProjects\\Ex2\\src\\api\\G1.json");
-        new GUI(alg.getGraph());
-    }
 
 }
