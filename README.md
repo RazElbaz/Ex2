@@ -38,8 +38,8 @@ The functions we implement:
     **Algo_Dijkstra**(int node_id)- solves the problem of finding the easiest route from point in graph to destination in a weighted graph.
 
  6. List<NodeData> **shortestPath**(int src, int dest)-return list of shortest path between src to dest, , if there is no path we return null.
- 7. NodeData **center**()- finds the NodeData which minimizes the max distance to all the other nodes.
- 
+ 7. NodeData **center**()-  Finds the NodeData with the shortest route to all other nodes.
+
  8. List<NodeData> **tsp**(List<NodeData> cities)- return a list of consecutive nodes which go over all the nodes in cities.
  9. **save**(file)- saves this weighted (directed) graph to the given, the file is JSON format.
  10. **load**(file)- loads a graph to this graph algorithm, the file is JSON format.
