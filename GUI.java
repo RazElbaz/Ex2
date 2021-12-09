@@ -33,6 +33,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         //set the size of the window
         this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("The Directed Weighted Graph Algorithms by: Raz & Lior");
         //create the tab option File and his options
         MenuBar menuBar = new MenuBar();
         Menu File = new Menu("File");
@@ -189,10 +190,10 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     GeoLocation p = new GeoLocationImpl(x, y,0.0);
                     Graph.addNode(new NodeDataImpl(p,key));
                     Graph = Graph_Algorithms.getGraph();
-                    new GUI(Graph);
+
+                    SCREEN.dispose();
                     repaint();
 
-                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 }
@@ -232,14 +233,17 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    //replace the text we got from the user to integer value and double value
                     int src = Integer.parseInt(srcText.getText());
                     int dest = Integer.parseInt(destText.getText());
                     double w = Double.parseDouble(weightText.getText());
+                    //send the variables to the Graph function connect
                     Graph.connect(src, dest, w);
                     Graph = Graph_Algorithms.getGraph();
-                    new GUI(Graph);
+                    //close the screen
+                    SCREEN.dispose();
+                    //draw the Graph
                     repaint();
-                    SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 }}});
@@ -269,17 +273,15 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         Enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+                //replace the text we got from the user to integer value
                     int key = Integer.parseInt(NodeKey.getText());
+                    //send the variable to the function
                     Graph.removeNode(key);
                     Graph = Graph_Algorithms.getGraph();
-                    new GUI(Graph);
+                    //close the screen
+                    SCREEN.dispose();
+                    //draw the Graph
                     repaint();
-
-                    SCREEN.setVisible(false);
-                } catch (Exception exception) {
-                    JOptionPane.showMessageDialog(null, "Invalid value");
-                }
             }
         });
     }
@@ -315,13 +317,16 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    //replace the text we got from the user to integer values
                     int src = Integer.parseInt(srcText.getText());
                     int dest = Integer.parseInt(destText.getText());
+                    //send the variables to the function
                     Graph.removeEdge(src, dest);
                     Graph = Graph_Algorithms.getGraph();
-                    new GUI(Graph);
+                    //close the screen
+                    SCREEN.dispose();
+                    //drow the Graph
                     repaint();
-
                     SCREEN.setVisible(false);
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
@@ -383,8 +388,10 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             public void actionPerformed(ActionEvent e) {
                 try {
                     JFrame frame = new JFrame();
+                    //replace the text we got from the user to integer values
                     int src = Integer.parseInt(src_text.getText());
                     int dest = Integer.parseInt(dest_text.getText());
+                    //send the variables to the function
                     List<NodeData> shortPath1 = Graph_Algorithms.shortestPath(src, dest);
                     System.out.println(shortPath1);
                     String ans ="";
@@ -393,18 +400,23 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                             ans = ans + shortPath1.get(i).getKey()+"-> ";
                         }
                         ans= ans +shortPath1.get(shortPath1.size()-1).getKey();
+                        //the print of the sort path
                         JOptionPane.showMessageDialog(frame, "The shortest Path is: " + ans);
                         Graph = Graph_Algorithms.getGraph();
-                        new GUI(Graph);
+                        //close the screen
+                        SCREEN.dispose();
+                        //draw the Graph
                         repaint();
                     }
                     else {
+                        //if the is no path print message to the user
                         JOptionPane.showMessageDialog(null, "There is no Path");
 
                     }
 
                     SCREEN.setVisible(false);
                 } catch (Exception exception) {
+                    //if the user insert bad variables
                     JOptionPane.showMessageDialog(null, "Invalid value");
                 } }});
     }
@@ -439,8 +451,10 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    //replace the text we got from the user to integer values and double value
                     int src = Integer.parseInt(src_text.getText());
                     int dest = Integer.parseInt(dest_text.getText());
+                    //send the variables to the function
                     double w= Graph_Algorithms.shortestPathDist(src, dest);
                     SCREEN.setVisible(false);
                     String ans = ""+ w;
@@ -472,6 +486,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
     }
 
     private void Center() {
+        //if the Graph is not connected
         if (Graph_Algorithms.center() == null) {
             JOptionPane.showMessageDialog(null, "Is not Connected");
         } else {
@@ -496,7 +511,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             close.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    SCREEN.setVisible(false);
+                    SCREEN.dispose();
                 }
             });
         }
@@ -528,6 +543,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             public void actionPerformed(ActionEvent e) {
                 try {
                     JFrame jFrame = new JFrame();
+                    //cut the list we got:
                     String List = targetsText.getText();
                     List<NodeData> nodeDataList = new ArrayList<NodeData>();
                     while (!List.isEmpty()) {
@@ -545,17 +561,19 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
                     }
                     ArrayList<NodeData> TSP_List = (ArrayList<NodeData>) Graph_Algorithms.tsp(nodeDataList);
                     String str ="";
+                    //save the list of the path in string:
                     if (TSP_List != null) {
                         for (int i = 0; i < TSP_List.size()-1; i++) {
                             str = str + TSP_List.get(i).getKey()+"->";
                         }
                         str= str +TSP_List.get(TSP_List.size()-1).getKey();
+                        //print the Path
                         JOptionPane.showMessageDialog(jFrame, "The shortest Path is: " + str);
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "Is not connected");
                     }
-                    SCREEN.setVisible(false);
+                    SCREEN.dispose();
 
                 } catch (Exception exception) {
                     JOptionPane.showMessageDialog(null, "Invalid value");
@@ -564,8 +582,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
         });
     }
 
-    // draw the Graph
-
+    // this function draw the Graph
     public void paint(Graphics G) {
         HashMap<Integer, Double> get_X = new HashMap<>(Graph.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(Graph.nodeSize());
@@ -601,8 +618,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             GeoLocation Geo_dest = Graph.getNode(edge_data.getDest()).getLocation();
             graphics.setColor(Color.BLACK);
             graphics.drawLine((int) Geo_src.x(), (int) Geo_src.y(), (int) Geo_dest.x(), (int) Geo_dest.y());
-            graphics.setColor(Color.BLUE);
-            graphics.drawLine((int) Geo_src.x(), (int) Geo_src.y(), (int) Geo_dest.x(), (int) Geo_dest.y());
 
         }
 
@@ -613,15 +628,17 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
             int y1 = get_Y.get(edge1.getSrc()).intValue();
             int x2 = get_X.get(edge1.getDest()).intValue();
             int y2 = get_Y.get(edge1.getDest()).intValue();
+            //draw the edges
             graphics.setColor(Color.gray);
             graphics.drawLine(x1+10, y1+10, x2+10, y2+10);
+            //draw the direction o
             graphics.setColor(Color.pink);
             graphics.fillOval(x2+7, y2+7, 7 * 2, 7 * 2);
 
         }
     }
 
-
+//This function normalizes the graph drawing to the screen size
     private void Normalization(HashMap<Integer, Double> normalize, double SRCoutput, double DESToutput) {
         double min = Double.MAX_VALUE,max = Double.MIN_VALUE;
         for (Integer key : normalize.keySet()) {
@@ -650,9 +667,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent arg0) {;}
-
-
-
 
 
 
