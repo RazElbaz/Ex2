@@ -35,7 +35,7 @@ The functions we implement:
    
  5. double **shortestPathDist**(int src, int dest)- computes the length of the shortest path between src to dest, if there is no path we return -1.
     We have created auxiliary function that we use for the function:
-    **Dijkstra**(int key)- solves the problem of finding the easiest route from point in graph to destination in a weighted graph.
+    **Algo_Dijkstra**(int node_id)- solves the problem of finding the easiest route from point in graph to destination in a weighted graph.
 
  6. List<NodeData> **shortestPath**(int src, int dest)-return list of shortest path between src to dest, , if there is no path we return null.
  7. NodeData **center**()- finds the NodeData which minimizes the max distance to all the other nodes.
