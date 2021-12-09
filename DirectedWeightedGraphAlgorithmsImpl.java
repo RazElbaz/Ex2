@@ -128,10 +128,11 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
     // reset all the variables in the graph
     private void resetGraph() {
         Collection<Integer> keys = new ArrayList<Integer>();
-        for (int i = 0; i < this.Graph.nodeSize(); i++) {
-            if (this.Graph.getNode(i)!= null){
-            keys.add(this.Graph.getNode(i).getKey());
-        }}
+        Iterator<NodeData> no = this.Graph.nodeIter();
+        while(no.hasNext()){
+        NodeData cnt =no.next();
+        keys.add(cnt.getKey());
+        }
         for (int node : keys) {
             NodeData n = this.Graph.getNode(node);
             n.setInfo("");
