@@ -55,7 +55,6 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     //@param dest
     @Override
     public EdgeData getEdge(int src, int dest) {
-
         return Edges.get(src).get(dest);
     }
 
@@ -81,17 +80,22 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     public void connect(int src, int dest, double w) {
         //check if there is an edge between src and dest-> w>0
         //check if the nodes we received are contained in the graph's vertex list
-        if (w > 0 && Nodes.containsKey(src) && Nodes.containsKey(dest)) {
-            if (this.getEdge(src, dest) != null) {
-                this.removeEdge(src, dest);
-            }
+        if (Nodes.containsKey(src) && Nodes.containsKey(dest)) {
             EdgeData ED = new EdgeDataImpl(src, dest, w);
-            this.Edges.get(src).put(dest, ED);
-            this.Edge_Size++;
-            this.MC++;
-        }
+            if(Edges.get(src)==null) //creat the new edge
+            {
+                Edges.put(src, new HashMap<Integer,EdgeData>());
+                Edge_Size++;
+                Edges.get(src).put(dest,ED);//connect the edge
+            }
+            else {//the edge is exist just connect the nodes
+                removeEdge(src,dest);
+                Edges.get(src).put(dest, ED);
+                Edge_Size++;
+            }
+            MC++;
 
-    }
+        }}
 
 
     //    This method returns an Iterator for the
@@ -113,14 +117,15 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     //    @return Iterator<EdgeData>
     @Override
     public Iterator<EdgeData> edgeIter() {
-         int cnt_MC = this.MC;
+        int cnt_MC = this.MC;
         Collection<EdgeData> Ed = new LinkedList<EdgeData>();
-        for (int i = 0; i < Node_Size; i++) {
-            if(Nodes.containsKey(i)){
-                Iterator<EdgeData> e = this.edgeIter(i);
-                while (e.hasNext()){
-                    Ed.add(e.next());
-                }}
+        Iterator<NodeData> nodes = nodeIter();
+        while(nodes.hasNext()){
+        int node_id = nodes.next().getKey();
+        Iterator<EdgeData> e = this.edgeIter(node_id);
+        while (e.hasNext()){
+            Ed.add(e.next());
+        }
         }
         if (this.MC!= cnt_MC)  {
             throw new RuntimeException();
@@ -133,7 +138,7 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
     //  @return Iterator<EdgeData>
     @Override
     public Iterator<EdgeData> edgeIter(int node_id) {
-             int cnt_MC = this.MC;
+        int cnt_MC = this.MC;
         if (this.MC != cnt_MC) {
             throw new RuntimeException();
         }
@@ -156,12 +161,16 @@ public class DirectedWeightedGraphImpl implements DirectedWeightedGraph {
         for (HashMap edge : Edges.values()) {
             if (edge.containsKey(key)) {
                 edge.remove(key);
+                this.Edge_Size=this.Edge_Size-1;
             }
         }
         //update the changes
+        int size = this.Edges.get(key).size();
         this.Nodes.remove(key);
+        this.Node_Size=this.Node_Size-1;
         this.Edges.remove(key);
         MC++;
+        this.Edge_Size = this.Edge_Size - size;
         return cnt;
     }
 
