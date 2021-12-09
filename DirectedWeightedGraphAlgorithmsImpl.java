@@ -130,8 +130,8 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
         Collection<Integer> keys = new ArrayList<Integer>();
         Iterator<NodeData> no = this.Graph.nodeIter();
         while(no.hasNext()){
-        NodeData cnt =no.next();
-        keys.add(cnt.getKey());
+            NodeData cnt =no.next();
+            keys.add(cnt.getKey());
         }
         for (int node : keys) {
             NodeData n = this.Graph.getNode(node);
@@ -197,11 +197,11 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
                             // add the new node
                             Prior_Queue.add(dest);
                         }}}}
-            }
+        }
         return ans;
     }
 
-    //Computes the the shortest path between src to dest - as an ordered List of nodes:
+    //Computes the shortest path between src to dest - as an ordered List of nodes:
     //src--> n1-->n2-->...dest
     // see: https://en.wikipedia.org/wiki/Shortest_path_problem
     //Note if no such path --> returns null;
@@ -227,7 +227,8 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
             if (cnt != null)
                 return ans;
         }
-        return null;//if the HashMap does not contain dest-key there is no path
+        //if the HashMap does not contain dest-key there is no path
+        return null;
     }
 
     //Finds the NodeData which minimizes the max distance to all the other nodes.
@@ -239,18 +240,19 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
             return null;
         }
         resetGraph();
+        //create NodeData that will return the answer
         NodeData ans = new NodeDataImpl();
         double ans_w = Double.MAX_VALUE;
         for (int i = 0; i < this.Graph.nodeSize(); i++) {
             double current = 0;
             for (int j = 0; j < this.Graph.nodeSize(); j++) {
-                // for node i calculate all the paths to the other nodes
+                // for node i we calculate all the paths to the other nodes
                 double w = shortestPathDist(i, j);
-                // sum all the paths
+                // Keeps the longest path
                 if (current<w)
                     current=w;
             }
-            //the min sum
+            //save the shortest path
             if (current < ans_w) {
                 ans_w = current;
                 ans = this.Graph.getNode(i);
@@ -266,9 +268,9 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
     @Override
     public List<NodeData> tsp(List<NodeData> cities) {
         for (int i =0; i<cities.size(); i++){
-          if(this.Graph.getNode(cities.get(i).getKey())==null){
-            return null;
-          }
+            if(this.Graph.getNode(cities.get(i).getKey())==null){
+                return null;
+            }
         }
         // if the graph is not connected return null
         if (this.isConnected()) {
@@ -411,5 +413,5 @@ public class DirectedWeightedGraphAlgorithmsImpl implements DirectedWeightedGrap
         return true;
     }
 
-   
+
 }
